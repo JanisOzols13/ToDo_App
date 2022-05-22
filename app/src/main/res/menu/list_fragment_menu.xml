@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_search"
-        android:title="@string/search"
+        android:title="@string/meklet"
         android:icon="@drawable/ic_search"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"
@@ -13,21 +13,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_sortBy"
-            android:title="@string/sort_by">
+            android:title="@string/kartot_pec">
             <menu>
                 <item
                     android:id="@+id/menu_priority_high"
-                    android:title="@string/priority_high"/>
+                    android:title="@string/augsta_pioritate"/>
                 <item
                     android:id="@+id/menu_priority_low"
-                    android:title="@string/priority_low"/>
+                    android:title="@string/zema_pioritate"/>
             </menu>
         </item>
     </group>
 
     <item
         android:id="@+id/menu_delete_all"
-        android:title="@string/delete_all"
+        android:title="@string/Izdzest_visus"
         app:showAsAction="never"/>
 
 </menu>

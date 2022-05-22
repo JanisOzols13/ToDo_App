@@ -13,6 +13,8 @@ import com.example.todoapp.data.models.ToDoData
 import com.example.todoapp.data.viewmodel.ToDoViewModel
 import com.example.todoapp.databinding.FragmentUpdateBinding
 import com.example.todoapp.fragments.SharedViewModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class UpdateFragment : Fragment() {
 
@@ -49,8 +51,16 @@ class UpdateFragment : Fragment() {
         when (item.itemId) {
             R.id.menu_save -> updateItem()
             R.id.menu_delete -> confirmItemRemoval()
+            R.id.Izveidosanas_datums -> date()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun date() {
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        val formatted = current.format(formatter)
+            Toast.makeText(requireContext(),formatted, Toast.LENGTH_SHORT).show()
     }
 
     private fun updateItem() {
@@ -68,11 +78,11 @@ class UpdateFragment : Fragment() {
                 description
             )
             mToDoViewModel.updateData(updatedItem)
-            Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Atjaunoti!", Toast.LENGTH_SHORT).show()
             // Navigate back
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), "Lūdzu aizpildiet visus laukus.", Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -80,18 +90,18 @@ class UpdateFragment : Fragment() {
     // Show AlertDialog to Confirm Item Removal
     private fun confirmItemRemoval() {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton("Ja") { _, _ ->
             mToDoViewModel.deleteItem(args.currentItem)
             Toast.makeText(
                 requireContext(),
-                "Successfully Removed: ${args.currentItem.title}",
+                "Izdzests: ${args.currentItem.title}",
                 Toast.LENGTH_SHORT
             ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete '${args.currentItem.title}'?")
-        builder.setMessage("Are you sure you want to remove '${args.currentItem.title}'?")
+        builder.setNegativeButton("Ne") { _, _ -> }
+        builder.setTitle("Izdzest '${args.currentItem.title}'?")
+        builder.setMessage("Vai jus velaties izdzest '${args.currentItem.title}'?")
         builder.create().show()
     }
 

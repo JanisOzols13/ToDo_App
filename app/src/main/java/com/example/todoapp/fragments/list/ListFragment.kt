@@ -149,9 +149,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 Toast.LENGTH_SHORT
             ).show()
         }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete everything?")
-        builder.setMessage("Are you sure you want to remove everything?")
+        builder.setNegativeButton("Ne") { _, _ -> }
+        builder.setTitle("Izdzest visu?")
+        builder.setMessage("AVai patiesam velaties visu izdzest?")
         builder.create().show()
     }
 

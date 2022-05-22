@@ -4,14 +4,17 @@
 
     <item
         android:id="@+id/menu_save"
-        android:title="@string/save"
+        android:title="@string/Saglabat"
         android:icon="@drawable/ic_save"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_delete"
-        android:title="@string/delete"
+        android:title="@string/izdzest"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/Izveidosanas_datums"
+        android:title="@string/Izveidosanas_datums" />
 
 </menu>
